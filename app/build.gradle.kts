@@ -76,4 +76,5 @@ dependencies {
     implementation("androidx.emoji2:emoji2-views-helper:$1.4.0")
     implementation("androidx.navigation:navigation-compose:2.7.0")
     implementation("io.coil-kt:coil-compose:1.4.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
 }
