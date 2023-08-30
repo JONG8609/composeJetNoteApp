@@ -3,6 +3,7 @@ package com.example.jetnoteapp.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import java.time.Instant
 import java.time.LocalDateTime
 import java.util.*

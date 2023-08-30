@@ -23,6 +23,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideAppDatabase(@ApplicationContext context: Context) : NoteDatabase
-    = Room.databaseBuilder(context, NoteDatabase::class.java, "note_db").fallbackToDestructiveMigration().build()
+    = Room.databaseBuilder(context, NoteDatabase::class.java, "note_db").fallbackToDestructiveMigration()
+        .build()
 
 }

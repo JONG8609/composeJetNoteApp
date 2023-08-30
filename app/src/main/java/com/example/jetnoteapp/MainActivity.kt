@@ -9,6 +9,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,9 +32,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetNoteAppTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    color = MaterialTheme.colors.background
-                ) {
+                Surface(color = MaterialTheme.colors.background) {
+                    //val noteViewModel = viewModel<NoteViewModel>()
                     val noteViewModel: NoteViewModel by viewModels()
                     NotesApp(noteViewModel)
 
@@ -45,8 +45,9 @@ class MainActivity : ComponentActivity() {
 
 @ExperimentalComposeUiApi
 @Composable
-fun NotesApp(noteViewModel: NoteViewModel = viewModel()){
-    val noteList = noteViewModel.getAllNotes()
+fun NotesApp(noteViewModel: NoteViewModel){
+    val noteList = noteViewModel.noteList.collectAsState().value
+
     NoteScreen(notes = noteList,
         onRemoveNote = { noteViewModel.removeNote(it) },
         onAddNote = { noteViewModel.addNote(it) })
